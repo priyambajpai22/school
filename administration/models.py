@@ -33,7 +33,7 @@ class Fee(models.Model):
 	student= models.ForeignKey(Student, on_delete=models.CASCADE,related_name='users')
 
 	def __str__(self):
-		return "%s the restaurant" % self.installment
+		return "%s student name" % self.student.name + "roll no  {}  and installment {}".format(self.student.rollno,self.installment)
 class Common(models.Model):
 	slider=models.ImageField(null=True)
 	slider1=models.ImageField(null=True)

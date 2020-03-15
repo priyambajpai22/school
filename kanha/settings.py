@@ -25,7 +25,7 @@ SECRET_KEY = '7&ioqq3+scgy=fsl-k-xhipzfxn^igsdi^hpn9@r#lz$co$ck$'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -46,7 +46,11 @@ CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 
 MIDDLEWARE = [
+ 'django.contrib.sessions.middleware.SessionMiddleware',
+    'django_session_timeout.middleware.SessionTimeoutMiddleware',
+
     'django.middleware.security.SecurityMiddleware',
+   
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -56,6 +60,10 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'kanha.urls'
+SESSION_EXPIRE_AFTER_LAST_ACTIVITY = True
+SESSION_EXPIRE_AFTER_LAST_ACTIVITY_GRACE_PERIOD = 1
+SESSION_EXPIRE_SECONDS = 10 
+SESSION_TIMEOUT_REDIRECT = '/administration/index/'
 
 TEMPLATES = [
     {
