@@ -67,6 +67,9 @@ class Contact(models.Model):
 	def __str__(self):
 		return self.name
 
+class Image(models.Model):
+	profile=models.ImageField()
+
 class ContactForm(forms.ModelForm):
 	class Meta:
 		model=Contact

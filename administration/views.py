@@ -11,6 +11,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from .models import Student,Fee,Content,ContactForm,Contact,Contact,ContentForm
 from django.db.models import Sum
 import json
+from .models import *
 from django.http import JsonResponse
 from django.urls import reverse
 from .models import Common
@@ -37,8 +38,9 @@ class Index(TemplateView):
 	template_name='index.html'
 
 	def get(self,request):
-	
-		return render(request,self.template_name,{'object':Content.objects.all()})
+
+		a=Image.objects.all()
+		return render(request,self.template_name,{'object':Content.objects.all(),'image':a})
 	
 
 
